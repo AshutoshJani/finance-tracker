@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to "Finance Tracker", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex me-auto">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right me-2 mb-2 mb-lg-0">
+            <li class="navbar-item">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <% if user_signed_in? %>
+
+
+                        <% if false %>
+                            <%# To Implement %>
+                            <button type="button" class="btn btn-outline-info dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <%= "(Admin)" if current_user[:admin] %> <%= current_user[:username] %>
+                            </button>
+                            <div class="dropdown-menu">
+                                <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+                                <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+                                <%= link_to "Create an article", new_article_path, class: "dropdown-item" %>
+                                <div class="dropdown-divider"></div>
+                                <%= link_to "Delete account", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "This action will delete your account and all associated articles as well, are you sure you want to delete your account" } %>
+                            </div>
+                        <% end %>
+
+                        <%= link_to "Logout", destroy_user_session_path, class: "btn btn-danger", method: :delete %>
+                    <% else %>
+                        <%= link_to "Login", new_user_session_path, class: "btn btn-outline-success" %>
+                        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
+                    <% end %>
+                </div>            
+            </li>
+        </ul>
+    </div>
+  </div>
+</nav>
