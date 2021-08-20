@@ -1,7 +1,15 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+html, body {
+    background-color: whitesmoke;
+}
+
 .navbar-brand {
     font-size: 1.5rem;
+}
+
+.main-body {
+    padding-top: 40px;
 }
 
 .field {
@@ -10,4 +18,21 @@
 
 .btns {
     margin-top: 4px;
+}
+
+.search-area {
+    padding-top: 60px;
+}
+
+.no-padding-right {
+    padding-right: 0 !important;
+}
+
+.no-padding-left {
+    padding-left: 0 !important;
+}
+
+.portfolio-result {
+    margin-top: 20px;
+    display: inline-block;
 }
