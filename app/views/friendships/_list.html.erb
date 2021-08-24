@@ -1,0 +1,25 @@
+<div class="row pt-4">
+    <div class="col-sm-9">
+        <table class="table table-hover table-striped table-secondary">
+            <thead>
+                <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Friends since</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @friends.each do |friend| %>
+                    <tr>
+                    <td><%= friend.full_name %></td>
+                    <td><%= time_ago_in_words(current_user.friend_since(friend.id)) %></td> 
+                    <td>
+                        <%= link_to "View Profile", user_path(friend), class: "btn btn-info" %>
+                        <%= link_to "Unfriend", friendship_path(friend), method: :delete, data: {confirm: "Are you sure you want to unfriend #{friend.full_name}"}, class: "btn btn-danger" %>
+                    </td>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
+    </div>
+</div>

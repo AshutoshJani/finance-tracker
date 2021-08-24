@@ -13,11 +13,10 @@
         <% else %>
             <span class="badge bg-danger ms-4">
                 You are already tracking
-                <% if !current_user.under_stock_limit? %>
-                    10 stocks
-                <% end %>
                 <% if current_user.already_tracked?(@stock.ticker.upcase) %>
                     this stock
+                <% elsif !current_user.under_stock_limit? %>
+                    10 stocks
                 <% end %>
             </span>
         <% end %>

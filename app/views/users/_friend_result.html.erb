@@ -1,0 +1,30 @@
+<div class="portfolio-result">
+    <%= render 'layouts/flash_messages' %>
+</div>
+
+<% if @friends.present? %>
+    <div class="card card-header portfolio-result">
+        <table class="col-md-12">
+            <tbody>
+                <% @friends.each do |friend| %>
+                    <tr>
+                        <td class="pe-4"><strong>Name</strong>: <%= friend.full_name %></td>
+                        <td class="ps-4"><strong>Email Id</strong>: <%= friend.email %></td>
+                        <td>
+                            <%= link_to "View Profile", user_path(friend), class: "btn btn-info ms-4" %>
+                            <% if current_user.not_friends_with?(friend.id) %>
+                                <%= link_to "Add Friend", friendships_path(friend: friend), method: :post, class: "btn btn-success ms-2" %>
+                            <% else %>
+                                <span class="badge bg-secondary ms-2">
+                                    You are already friends with this user
+                                </span>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+
+            </tbody>
+        </table>
+    </div>
+        
+<% end %>
