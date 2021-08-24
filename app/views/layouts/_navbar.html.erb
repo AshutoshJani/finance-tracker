@@ -55,10 +55,34 @@
                             </div>
                         <% end %>
 
-                        <%= link_to "Logout", destroy_user_session_path, class: "btn btn-danger", method: :delete %>
+                        <li class="nav-item dropdown pe-2">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <%= fa_icon 'user' %> <%= current_user.full_name %>
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                              <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+                                <%= fa_icon 'edit' %> Edit Account
+                              <% end %>  
+                            </li>
+                          </ul>
+                        </li>
+                        
+                        <% if false %>
+                          <li class="nav-item text-light user-name">
+                            <%= fa_icon 'user' %> <%= current_user.full_name %>
+                          </li> 
+                        <% end %>
+
+                        <li class="nav-item">
+                          <%= link_to "Logout", destroy_user_session_path, class: "btn btn-danger", method: :delete %>
+                        </li>
+
                     <% else %>
-                        <%= link_to "Login", new_user_session_path, class: "btn btn-outline-success" %>
-                        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
+                    
+                          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-success" %>
+                          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
+          
                     <% end %>
                 </div>            
             </li>

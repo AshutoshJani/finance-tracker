@@ -21,4 +21,9 @@ class User < ApplicationRecord
     under_stock_limit? && !already_tracked?(ticker)
   end
 
+  def full_name
+    return "#{first_name} #{last_name}" if first_name || last_name
+    "Anonymous"
+  end
+
 end
