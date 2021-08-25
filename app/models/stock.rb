@@ -20,4 +20,12 @@ class Stock < ApplicationRecord
         find_by(ticker: ticker)
     end
 
+    def self.update_prices(ticker)
+        client = IEX::Api::Client.new(
+            publishable_token: Rails.application.credentials.iex_cloud[:sandbox_api_key],
+            endpoint: 'https://sandbox.iexapis.com/v1'
+          )
+          client.price(ticker)
+    end
+
 end

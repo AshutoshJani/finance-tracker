@@ -1,4 +1,5 @@
 class StocksController < ApplicationController
+    respond_to :html, :json
 
     def search
         if params[:stock].present?
@@ -21,6 +22,15 @@ class StocksController < ApplicationController
                 # render 'users/my_portfolio'
             end
         end
+    end
+
+    def update
+        @stock = Stock.find(params[:stock])
+        @stock.last_price = Stock.update_prices(@stock.ticker)
+        @stock.save
+
+        redirect_to my_portfolio_path
+    
     end
     
 end
